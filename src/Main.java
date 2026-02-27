@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Main {
 
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Cliente> clientes = new ArrayList<>();
+    static ArrayList<Servico> servicos = new ArrayList<>();
+    static ArrayList<Agendamento> agendamentos = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -30,13 +31,29 @@ public class Main {
                     break;
 
                 case 4:
+                    cadastrarServico();
+                    break;
+
+                case 5:
+                    listarServicos();
+                    break;
+
+                case 6:
+                    agendar();
+                    break;
+
+                case 7:
+                    listarAgendamentos();
+                    break;
+
+                case 0:
                     System.out.println("Saindo...");
                     break;
 
                 default:
                     System.out.println("Opcao invalida!!");
             }
-        } while (opcao != 4);
+        } while (opcao != 0);
 
 
     }
@@ -46,7 +63,11 @@ public class Main {
         System.out.println("1 - Cadastrar Cliente");
         System.out.println("2 - Listar Clientes");
         System.out.println("3 - Buscar Clientes");
-        System.out.println("4 - Sair");
+        System.out.println("4 - Cadastrar Servicos");
+        System.out.println("5 - Listar Servicos");
+        System.out.println("6 - Agendar");
+        System.out.println("7 = Listar Agendamentos");
+        System.out.println("0 - Sair");
         System.out.println("Escolha: ");
     }
 
@@ -102,6 +123,80 @@ public class Main {
         }
         if (!encontrado) {
             System.out.println("Cliente nao encontrado!");
+        }
+    }
+
+    private static void cadastrarServico(){
+        System.out.println("Digite o nome do servico: ");
+        String nome = scanner.nextLine();
+
+        System.out.println("Digite o preco: ");
+        double preco = scanner.nextDouble();
+        scanner.nextLine(); // limpar o buffer
+
+        Servico servico = new Servico(nome, preco);
+        servicos.add(servico);
+
+        System.out.println("Servico cadastrado com sucesso!!");
+
+    }
+
+    public static void listarServicos(){
+        if (servicos.isEmpty()){
+            System.out.println("Nenhum servico cadastrado!");
+            return;
+        }
+        for (Servico  servico : servicos){
+            servico.exibirServico();
+        }
+    }
+
+    public static void agendar(){
+        if (clientes.isEmpty()){
+            System.out.println("Nenhum cliente cadastrado!");
+            return;
+        }
+
+        if (servicos.isEmpty()){
+            System.out.println("Nenhum servico cadastrado!");
+            return;
+        }
+        System.out.println("Escolha o cliente: ");
+        for (int i = 0; i < clientes.size(); i++){
+            System.out.println((i + 1) + "-" + clientes.get(i).getNome());
+        }
+        int indiceCliente = scanner.nextInt() - 1;
+        scanner.nextLine();
+        Cliente clienteEscolhido = clientes.get(indiceCliente);
+
+        System.out.println("Escolha o servico:");
+
+        for (int i = 0; i < servicos.size(); i++){
+            System.out.println((i + 1) + "-" + servicos.get(i).getNome());
+        }
+
+        int indiceServico = scanner.nextInt() - 1;
+        scanner.nextLine();
+
+        Servico servicoEscolhido = servicos.get(indiceServico);
+
+        System.out.println("Digite o Horario: ");
+        String horario = scanner.nextLine();
+
+        Agendamento agendamento = new Agendamento(clienteEscolhido, servicoEscolhido, horario);
+        agendamentos.add(agendamento);
+
+        System.out.println("Agendamento realizado com sucesso!");
+
+
+    }
+
+    public static void listarAgendamentos(){
+        if (agendamentos.isEmpty()){
+            System.out.println("Nenhum agendamento encontrado!");
+        }
+        for (Agendamento agendamento : agendamentos){
+            agendamento.mostrarAgendamento();
         }
     }
 

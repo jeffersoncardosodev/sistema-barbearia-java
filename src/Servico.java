@@ -1,9 +1,9 @@
 public class Servico {
 
     private String nome;
-    private String preco;
+    private double preco;
 
-    public Servico(String nome, String preco){
+    public Servico(String nome, double preco){
         this.nome = nome;
         this.preco = preco;
     }
@@ -12,8 +12,12 @@ public class Servico {
         return nome;
     }
 
-    public String getPreco(){
+    public double getPreco(){
         return preco;
+    }
+
+    public void exibirServico(){
+        System.out.println("Servico: " + nome + " | Preco: R$ " + preco);
     }
 
 
