@@ -141,7 +141,7 @@ public class Main {
 
     }
 
-    public static void listarServicos(){
+    private static void listarServicos(){
         if (servicos.isEmpty()){
             System.out.println("Nenhum servico cadastrado!");
             return;
@@ -151,7 +151,7 @@ public class Main {
         }
     }
 
-    public static void agendar(){
+    private static void agendar(){
         if (clientes.isEmpty()){
             System.out.println("Nenhum cliente cadastrado!");
             return;
@@ -191,7 +191,7 @@ public class Main {
 
     }
 
-    public static void listarAgendamentos(){
+    private static void listarAgendamentos(){
         if (agendamentos.isEmpty()){
             System.out.println("Nenhum agendamento encontrado!");
         }
