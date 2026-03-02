@@ -81,7 +81,11 @@ public class Main {
         System.out.println("Digite o telefone: ");
         String telefone = scanner.nextLine();
 
-        Cliente cliente = new Cliente(nome, telefone);
+        System.out.println("Digite seu email: ");
+        String email = scanner.nextLine();
+
+
+        Cliente cliente = new Cliente(nome, telefone, email);
         clientes.add(cliente);
 
         System.out.println("Cliente cadastrado com sucesso!!");
