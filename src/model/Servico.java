@@ -1,3 +1,5 @@
+package model;
+
 public class Servico {
 
     private String nome;
@@ -17,7 +19,7 @@ public class Servico {
     }
 
     public void exibirServico(){
-        System.out.println("Servico: " + nome + " | Preco: R$ " + preco);
+        System.out.println("model.Servico: " + nome + " | Preco: R$ " + preco);
     }
 
 

@@ -1,3 +1,8 @@
+import dao.ClienteDAO;
+import model.Agendamento;
+import model.Cliente;
+import model.Servico;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -46,6 +51,14 @@ public class Main {
                     listarAgendamentos();
                     break;
 
+                case 8:
+                    atualizarCliente();
+                    break;
+
+                case 9:
+                    deletarCliente();
+                    break;
+
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -66,7 +79,9 @@ public class Main {
         System.out.println("4 - Cadastrar Servicos");
         System.out.println("5 - Listar Servicos");
         System.out.println("6 - Agendar");
-        System.out.println("7 = Listar Agendamentos");
+        System.out.println("7 - Listar Agendamentos");
+        System.out.println("8 - Atualizar Cliente");
+        System.out.println("9 - Deletar Cliente");
         System.out.println("0 - Sair");
         System.out.println("Escolha: ");
     }
@@ -86,22 +101,18 @@ public class Main {
 
 
         Cliente cliente = new Cliente(nome, telefone, email);
-        clientes.add(cliente);
 
-        System.out.println("Cliente cadastrado com sucesso!!");
+
+        ClienteDAO dao = new ClienteDAO();
+        dao.salvar(cliente);
+
+        System.out.println("model.Cliente cadastrado com sucesso!!");
 
     }
 
     private static void listarClientes(){
-        // percorre a lista
-        // chama o mostrarCliente()
-        if (clientes.isEmpty()){
-            System.out.println("Nenhum cliente cadastrado!");
-            return;
-        }
-        for (Cliente cliente : clientes){
-            cliente.mostrarCliente();
-        }
+        ClienteDAO dao = new ClienteDAO();
+        dao.listarClientes();
 
     }
 
@@ -110,10 +121,7 @@ public class Main {
         // compara com equalsIgnore case
         // se encontrar, mostra cliente
         // se nao encontrar mostra a mensagem
-        if (clientes.isEmpty()){
-            System.out.println("Nenhum cliente encontrado!");
-            return;
-        }
+
         System.out.println("Digite o nome para buscar");
         String nomeBusca = scanner.nextLine();
         boolean encontrado = false;
@@ -126,7 +134,7 @@ public class Main {
             }
         }
         if (!encontrado) {
-            System.out.println("Cliente nao encontrado!");
+            System.out.println("model.Cliente nao encontrado!");
         }
     }
 
@@ -141,7 +149,7 @@ public class Main {
         Servico servico = new Servico(nome, preco);
         servicos.add(servico);
 
-        System.out.println("Servico cadastrado com sucesso!!");
+        System.out.println("model.Servico cadastrado com sucesso!!");
 
     }
 
@@ -190,7 +198,7 @@ public class Main {
         Agendamento agendamento = new Agendamento(clienteEscolhido, servicoEscolhido, horario);
         agendamentos.add(agendamento);
 
-        System.out.println("Agendamento realizado com sucesso!");
+        System.out.println("model.Agendamento realizado com sucesso!");
 
 
     }
@@ -202,6 +210,36 @@ public class Main {
         for (Agendamento agendamento : agendamentos){
             agendamento.mostrarAgendamento();
         }
+    }
+
+    private static void atualizarCliente(){
+
+        System.out.println("Digite o ID do cliente:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Novo nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.println("Novo telefone: ");
+        String telefone = scanner.nextLine();
+
+        System.out.println("Novo email: ");
+        String email = scanner.nextLine();
+
+        ClienteDAO dao = new ClienteDAO();
+        dao.atualizarCliente(id, nome, telefone, email);
+
+    }
+
+    private static void deletarCliente(){
+
+        System.out.println("Digite o ID do cliente para excluir: ");
+        int id = scanner.nextInt();
+
+        ClienteDAO dao = new ClienteDAO();
+        dao.deletarCliente(id);
+
     }
 
 

@@ -1,3 +1,5 @@
+package model;
+
 public class Agendamento {
 
     private Cliente cliente;
@@ -11,7 +13,7 @@ public class Agendamento {
     }
 
     public void mostrarAgendamento(){
-        System.out.println("Cliente: " + cliente.getNome());
+        System.out.println("model.Cliente: " + cliente.getNome());
         System.out.println("Serviço: " + servico.getNome());
         System.out.println("Horário: " + horario);
         System.out.println("Valor: " + servico.getPreco());

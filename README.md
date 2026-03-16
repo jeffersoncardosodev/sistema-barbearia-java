@@ -33,15 +33,15 @@ O sistema funciona via console e permite o gerenciamento básico de uma barbeari
 
 ## 🏗 Estrutura do Projeto
 
-- `Cliente.java`
-- `Servico.java`
-- `Agendamento.java`
+- `model.Cliente.java`
+- `model.Servico.java`
+- `model.Agendamento.java`
 - `Main.java`
 
 O sistema utiliza relacionamento entre objetos:
 
-- Um **Agendamento** possui um **Cliente**
-- Um **Agendamento** possui um **Serviço**
+- Um **model.Agendamento** possui um **model.Cliente**
+- Um **model.Agendamento** possui um **Serviço**
 
 ---
 
