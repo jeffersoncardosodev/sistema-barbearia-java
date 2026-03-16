@@ -1,74 +1,67 @@
-# 💈 Sistema de Barbearia - Java
+# 💈 Sistema de Barbearia - Java + MySQL
 
-Projeto desenvolvido para praticar Programação Orientada a Objetos (POO) em Java.
+Projeto desenvolvido em Java com o objetivo de praticar conceitos fundamentais de programação backend e integração com banco de dados.
 
-O sistema funciona via console e permite o gerenciamento básico de uma barbearia, incluindo cadastro de clientes, serviços e agendamentos.
-
----
-
-## 🚀 Funcionalidades
-
-✔ Cadastro de clientes  
-✔ Listagem de clientes  
-✔ Busca de cliente por nome  
-✔ Cadastro de serviços  
-✔ Listagem de serviços  
-✔ Criação de agendamentos  
-✔ Listagem de agendamentos
+O sistema simula o gerenciamento básico de uma barbearia, permitindo o cadastro e gerenciamento de clientes através de um menu interativo no console.
 
 ---
 
-## 🧠 Conceitos aplicados
+## 🚀 Tecnologias utilizadas
+
+- Java
+- MySQL
+- JDBC (Java Database Connectivity)
+- IntelliJ IDEA
+- Git e GitHub
+
+---
+
+## 📚 Conceitos praticados
+
+Durante o desenvolvimento deste projeto foram aplicados diversos conceitos importantes de programação:
 
 - Programação Orientada a Objetos (POO)
-- Encapsulamento
-- Composição entre classes
-- Uso de ArrayList
-- Estruturas de repetição
-- Estruturas condicionais
-- Controle de fluxo com menu interativo
-- Tratamento básico de entrada com Scanner
+- Estrutura de menus em aplicações de console
+- Integração entre Java e banco de dados
+- Execução de comandos SQL via JDBC
+- Organização do projeto em camadas (Model, DAO e Database)
+- Uso de PreparedStatement para execução segura de consultas SQL
+- Implementação de operações CRUD
 
 ---
 
-## 🏗 Estrutura do Projeto
+## ⚙️ Funcionalidades do sistema
 
-- `model.Cliente.java`
-- `model.Servico.java`
-- `model.Agendamento.java`
-- `Main.java`
+Atualmente o sistema permite:
 
-O sistema utiliza relacionamento entre objetos:
+- Cadastrar clientes
+- Listar clientes cadastrados
+- Atualizar dados de clientes
+- Deletar clientes do sistema
 
-- Um **model.Agendamento** possui um **model.Cliente**
-- Um **model.Agendamento** possui um **Serviço**
-
----
-
-## 📌 Como executar
-
-1. Compilar os arquivos:
-```
-javac *.java
-```
-
-2. Executar o sistema:
-```
-java Main
-```
+Todas as informações são armazenadas em um banco de dados MySQL.
 
 ---
 
-## 🎯 Objetivo do Projeto
+## 🏗 Estrutura do projeto
 
-Praticar lógica de programação e estruturação de um sistema simples utilizando Java puro, simulando um cenário real de negócio.
-
----
+src
+│
+├── model
+│ ├── Cliente.java
+│ ├── Servico.java
+│ └── Agendamento.java
+│
+├── dao
+│ └── ClienteDAO.java
+│
+├── database
+│ └── Conexao.java
+│
+└── Main.java
 
 ## 🔜 Melhorias Futuras
 
-- Adicionar validação de entradas inválidas
-- Adicionar data no agendamento
 - Persistência em banco de dados
 - Refatoração para organização em pacotes
 - Evolução para API REST com Spring Boot
