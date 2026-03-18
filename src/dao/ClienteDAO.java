@@ -25,7 +25,7 @@ public class ClienteDAO {
 
             stmt.executeUpdate();
 
-            System.out.println("model.Cliente salvo com sucesso!");
+            System.out.println("Cliente salvo com sucesso!");
 
         } catch (Exception e) {
             System.out.println("Erro ao salvar o cliente: " + e);
@@ -83,9 +83,9 @@ public class ClienteDAO {
             int linhas = stmt.executeUpdate();
 
             if (linhas > 0){
-                System.out.println("model.Cliente atualizado com sucesso!");
+                System.out.println("Cliente atualizado com sucesso!");
             } else {
-                System.out.println("model.Cliente nao encontrado!");
+                System.out.println("Cliente nao encontrado!");
             }
 
         } catch (Exception e) {
@@ -108,9 +108,9 @@ public class ClienteDAO {
             int linhas = stmt.executeUpdate();
 
             if (linhas > 0){
-                System.out.println("model.Cliente deletado com sucesso!!");
+                System.out.println("Cliente deletado com sucesso!!");
             } else {
-                System.out.println("model.Cliente nao encontrado!!");
+                System.out.println("Cliente nao encontrado!!");
             }
 
 

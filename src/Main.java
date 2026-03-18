@@ -1,4 +1,6 @@
+import dao.AgendamentoDAO;
 import dao.ClienteDAO;
+import dao.ServicoDAO;
 import model.Agendamento;
 import model.Cliente;
 import model.Servico;
@@ -102,7 +104,6 @@ public class Main {
 
         Cliente cliente = new Cliente(nome, telefone, email);
 
-
         ClienteDAO dao = new ClienteDAO();
         dao.salvar(cliente);
 
@@ -147,9 +148,9 @@ public class Main {
         scanner.nextLine(); // limpar o buffer
 
         Servico servico = new Servico(nome, preco);
-        servicos.add(servico);
 
-        System.out.println("model.Servico cadastrado com sucesso!!");
+        ServicoDAO dao = new ServicoDAO();
+        dao.salvarServico(servico);
 
     }
 
@@ -164,39 +165,28 @@ public class Main {
     }
 
     private static void agendar(){
-        if (clientes.isEmpty()){
-            System.out.println("Nenhum cliente cadastrado!");
-            return;
-        }
 
-        if (servicos.isEmpty()){
-            System.out.println("Nenhum servico cadastrado!");
-            return;
-        }
-        System.out.println("Escolha o cliente: ");
-        for (int i = 0; i < clientes.size(); i++){
-            System.out.println((i + 1) + "-" + clientes.get(i).getNome());
-        }
-        int indiceCliente = scanner.nextInt() - 1;
-        scanner.nextLine();
-        Cliente clienteEscolhido = clientes.get(indiceCliente);
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Escolha o servico:");
+        System.out.println("==== CLIENTES ====");
+        listarClientes();
 
-        for (int i = 0; i < servicos.size(); i++){
-            System.out.println((i + 1) + "-" + servicos.get(i).getNome());
-        }
+        System.out.println("Digite o ID do cliente: ");
+        int clienteId = scanner.nextInt();
 
-        int indiceServico = scanner.nextInt() - 1;
+        System.out.println("==== SERVICOS ====");
+        listarServicos();
+
+        System.out.println("Digite o ID do servico: ");
+        int servicoId = scanner.nextInt();
         scanner.nextLine();
 
-        Servico servicoEscolhido = servicos.get(indiceServico);
-
-        System.out.println("Digite o Horario: ");
+        System.out.println("Digite a data e hora: ");
         String horario = scanner.nextLine();
 
-        Agendamento agendamento = new Agendamento(clienteEscolhido, servicoEscolhido, horario);
-        agendamentos.add(agendamento);
+
+        AgendamentoDAO dao = new AgendamentoDAO();
+        dao.salvarAgendamentos(clienteId, servicoId, horario);
 
         System.out.println("model.Agendamento realizado com sucesso!");
 

@@ -10,7 +10,7 @@ public class Conexao {
         try{
             String url = "jdbc:mysql://localhost:3306/barbearia_db";
             String usuario = "root";
-            String senha = "*****";
+            String senha = "******";
 
             Connection conn = DriverManager.getConnection(url, usuario, senha);
 
