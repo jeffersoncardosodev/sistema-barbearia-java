@@ -26,7 +26,7 @@ Durante o desenvolvimento deste projeto foram aplicados diversos conceitos impor
 - Execução de comandos SQL via JDBC
 - Organização do projeto em camadas (Model, DAO e Database)
 - Uso de PreparedStatement para execução segura de consultas SQL
-- Implementação de operações CRUD
+
 
 ---
 
@@ -53,7 +53,9 @@ src
 │ └── Agendamento.java
 │
 ├── dao
-│ └── ClienteDAO.java
+│ |── ClienteDAO.java
+| |── ServicoDAO.java
+| └── AgendamentoDAO.java
 │
 ├── database
 │ └── Conexao.java
